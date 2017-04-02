@@ -69,15 +69,19 @@
             </li>
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> secondtruth <b class="caret"></b>
+                    <i class="fa fa-user fa-fw"></i> {{Auth::user()->name}} <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                    </li>
-                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+
+
+                    <li><a href="{{ url('/logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
                     </li>
                 </ul>
             </li>
@@ -114,9 +118,10 @@
                     <li>
                         <a href="#"><i class="fa fa-sitemap fa-fw"></i> Posts<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="#">Create Post</a></li>
+                            <li><a href="{{route('posts.index')}}">View Post</a></li>
+                            <li><a href="{{route('posts.create')}}">Create Post</a></li>
                             <li><a href="#">Edit Post</a></li>
-                            <li><a href="#">View Post</a></li>
+
                         </ul>
                     </li>
                     <li>

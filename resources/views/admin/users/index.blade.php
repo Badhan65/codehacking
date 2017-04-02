@@ -5,6 +5,10 @@
 @endsection
 
 @section('content')
+
+    @if(Session::has('deleted_users'))
+        <p class="bg-danger">{{Session('deleted_users')}}</p>
+    @endif
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead>
